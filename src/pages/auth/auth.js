@@ -206,7 +206,7 @@ export const Auth = () => {
             onClick={switchBetweenLoginAndRegister}
             sx={{ marginTop: 3, borderRadius: 3, width: "100%" }}
           >
-            Change To {isSignup ? "Login" : "Signup"}
+            Change To {isSignup ? "Loginas" : "Signupas"}
           </Button>
         </Box>
       </form>
