@@ -35,7 +35,7 @@ export const Auth = () => {
     setIsSignup(!isSignup);
   };
 
-  const headerText = isSignup ? "Signup" : "Login";
+  const headerText = isSignup ? "Signupas" : "Loginas";
 
   const handleSubmit = (e) => {
     e.preventDefault();
