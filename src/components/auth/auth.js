@@ -206,7 +206,6 @@ export const Auth = () => {
             type="submit"
             variant="contained"
             color="warning"
-            disabled={isBtnLoading}
             onClick={() => setIsBtnLoading(true)}
             sx={{ marginTop: 3, borderRadius: 3, width: "100%" }}
           >
