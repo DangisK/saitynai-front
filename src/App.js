@@ -1,14 +1,12 @@
 import "./App.css";
 import { AppContext } from "./context";
-import { Route, Routes, useNavigate, Navigate } from "react-router-dom";
+import { Route, Routes, Navigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { Auth } from "./pages/auth";
-import { Feed, Navbar } from "./components";
+import { Feed, Navbar, Auth } from "./components";
 import { Sidebar } from "./components/sidebar/sidebar";
 import { Rightbar } from "./components/rightbar/rightbar";
 import { Stack } from "@mui/system";
 import { Box, createTheme, ThemeProvider } from "@mui/material";
-import { AddPostModal } from "./components/feed/add-post-modal";
 import { Post } from "./components/post";
 
 function App() {
@@ -23,7 +21,6 @@ function App() {
         }
   );
   const [isUserLoggedIn, setIsUserLoggedIn] = useState(user.token !== "");
-  const navigateTo = useNavigate();
   const [mode, setMode] = useState("dark");
 
   const darkTheme = createTheme({

@@ -21,6 +21,7 @@ export const Auth = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isBtnLoading, setIsBtnLoading] = useState(false);
 
   // State variables for input validation
   const [nameError, setNameError] = useState("");
@@ -35,15 +36,17 @@ export const Auth = () => {
     setIsSignup(!isSignup);
   };
 
-  const headerText = isSignup ? "Signupas" : "Loginas";
+  const headerText = isSignup ? "signup" : "login";
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     // Validate the form before submission
     if (validateForm()) {
       isSignup ? sendRegisterRequest() : sendLoginRequest();
     }
+
+    setIsBtnLoading(false);
   };
 
   const validateForm = () => {
@@ -140,10 +143,15 @@ export const Auth = () => {
             ":hover": {
               boxShadow: "0px 0px 4px 2px rgba(0,0,0,0.75)",
             },
-            backgroundColor: "#FFFFEF",
+            backgroundColor: "white",
           }}
         >
-          <Typography variant="h2" padding={3} textAlign="center" sx={{ color: "#121212" }}>
+          <Typography
+            variant="h2"
+            padding={3}
+            textAlign="center"
+            sx={{ color: "#121212", textTransform: "capitalize" }}
+          >
             {headerText}
           </Typography>
           {!!errorMessage && <FormHelperText error>{errorMessage}</FormHelperText>}
@@ -198,15 +206,17 @@ export const Auth = () => {
             type="submit"
             variant="contained"
             color="warning"
+            disabled={isBtnLoading}
+            onClick={() => setIsBtnLoading(true)}
             sx={{ marginTop: 3, borderRadius: 3, width: "100%" }}
           >
-            {headerText}
+            {isBtnLoading ? "Loading..." : headerText}
           </Button>
           <Button
             onClick={switchBetweenLoginAndRegister}
             sx={{ marginTop: 3, borderRadius: 3, width: "100%" }}
           >
-            Change To {isSignup ? "Loginas" : "Signupas"}
+            Change To {isSignup ? "login" : "signup"}
           </Button>
         </Box>
       </form>
